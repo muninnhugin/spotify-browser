@@ -23,7 +23,7 @@ export class SpotifyService {
     //It's possible to do the assignment using lastValueFrom, but we recommend using toPromise() for now as we haven't
     //yet talked about Observables. https://indepth.dev/posts/1287/rxjs-heads-up-topromise-is-being-deprecated
     let promise = new Promise((resolve, reject) => {
-        this.http.get(endpoint)
+        this.http.get("https://api.spotify.com" + endpoint)
         .toPromise()
     });
 
@@ -48,7 +48,7 @@ export class SpotifyService {
   getArtist(artistId:string):Promise<ArtistData> {
     //TODO: use the artist endpoint to make a request to express.
     //Again, you may need to encode the artistId.
-    return this.sendRequestToExpress(artistId).then((data) => {
+    return this.sendRequestToExpress("v1/artists/" + artistId).then((data) => {
         return new ArtistData(data);
     });
   }
