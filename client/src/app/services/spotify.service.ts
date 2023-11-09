@@ -6,6 +6,7 @@ import { TrackData } from '../data/track-data';
 import { ResourceData } from '../data/resource-data';
 import { ProfileData } from '../data/profile-data';
 import { TrackFeature } from '../data/track-feature';
+import { firstValueFrom } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -22,12 +23,11 @@ export class SpotifyService {
     //Note: toPromise() is a deprecated function that will be removed in the future.
     //It's possible to do the assignment using lastValueFrom, but we recommend using toPromise() for now as we haven't
     //yet talked about Observables. https://indepth.dev/posts/1287/rxjs-heads-up-topromise-is-being-deprecated
-    let promise = new Promise((resolve, reject) => {
-        this.http.get("https://api.spotify.com" + endpoint)
-        .toPromise()
+    return firstValueFrom(this.http.get(this.expressBaseUrl + endpoint)).then((response) => {
+      return response;
+    }, (err) => {
+      return err;
     });
-
-    return promise
   }
 
   aboutMe():Promise<ProfileData> {
@@ -48,14 +48,17 @@ export class SpotifyService {
   getArtist(artistId:string):Promise<ArtistData> {
     //TODO: use the artist endpoint to make a request to express.
     //Again, you may need to encode the artistId.
-    return this.sendRequestToExpress("v1/artists/" + artistId).then((data) => {
+    return this.sendRequestToExpress('/artist/' + encodeURIComponent(artistId)).then((data) => {
         return new ArtistData(data);
     });
   }
 
   getRelatedArtists(artistId:string):Promise<ArtistData[]> {
     //TODO: use the related artist endpoint to make a request to express and return an array of artist data.
-   return null as any;
+    // return this.sendRequestToExpress('/artist-related-artists/:' + artistId).then((data) => {
+    //   return new ArtistData(data);
+    // });
+    return null as any;
   }
 
   getTopTracksForArtist(artistId:string):Promise<TrackData[]> {
