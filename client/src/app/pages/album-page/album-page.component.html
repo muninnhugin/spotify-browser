@@ -5,7 +5,7 @@
 		<p *ngFor="let artist of album.artists">
 			Artist: <a [href]="artist.url">{{artist.name}}</a>
 		</p>
-		<p><!--TODO: display the track list for the album. Hide the artist and album columns because they are redundant on this page.-->
+		<p>
 			<a class="btn btn-light" role="button" target="_blank" [href]="album.url">Open {{album.name}} on Spotify</a>
 		</p>
 	</div>
