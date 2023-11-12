@@ -15,15 +15,25 @@ export class SearchComponent implements OnInit {
   searchString:string;
   searchCategory:string = 'artist';
   searchCategories:string[] = ['artist', 'album', 'track'];
-  resources:ResourceData[];
+  artists:ArtistData[];
+  tracks:TrackData[];
+  albums:AlbumData[];
 
   constructor(private spotifyService:SpotifyService) { }
 
   ngOnInit() {
   }
 
+  // TODO: test with switching search between artist/album and track
   search() {
-    //TODO: call search function in spotifyService and parse response
+    this.spotifyService.searchFor(this.searchCategory, this.searchString).then(resource => {
+      switch (this.searchCategory) {
+        case 'artist':  this.artists = resource['artists']['items']; break;
+        case 'track':   this.tracks = resource['tracks']['items'];  break;
+        case 'album':   this.albums = resource['albums']['items'];  break;
+        default:        console.error("Unhandled category in spotifyService.searchFor()")
+      }
+    })
   }
 
 }
