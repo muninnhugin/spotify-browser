@@ -37,6 +37,7 @@ export class SpotifyService {
     return this.sendRequestToExpress(
         '/search/' + encodeURIComponent(category) + '/' + encodeURIComponent(resource))
         .then((data) => { return data;  })
+        // I think the category doesn't need to be encoded, and the function returns an array of ResourceData
   }
 
   getArtist(artistId:string):Promise<ArtistData> {
@@ -77,7 +78,7 @@ export class SpotifyService {
 
   getAlbum(albumId:string):Promise<AlbumData> {
     return this.sendRequestToExpress('/album/' + encodeURIComponent(albumId)).then((data) => {
-      return data;
+      return data; // I think it should return new AlbumData(data)
     })
   }
 
@@ -100,6 +101,7 @@ export class SpotifyService {
   getAudioFeaturesForTrack(trackId:string):Promise<TrackFeature[]> {
     return this.sendRequestToExpress('/track-audio-features/' + encodeURIComponent(trackId)).then((data) => {
       let result = [];
+      // I don't know if I can do this staticly
       result.push(new TrackFeature('danceability', data['danceability']));
       result.push(new TrackFeature('energy', data['energy']));
       result.push(new TrackFeature('speechiness', data['speechiness']));
