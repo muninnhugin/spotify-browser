@@ -93,7 +93,7 @@ export class SpotifyService {
 
   getTrack(trackId:string):Promise<TrackData> {
     return this.sendRequestToExpress('/track/' + encodeURIComponent(trackId)).then((data) => {
-      return data;
+      return new TrackData(data);
     })
   }
 
