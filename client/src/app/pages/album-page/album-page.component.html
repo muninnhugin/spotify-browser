@@ -3,7 +3,7 @@
 		<h1>{{album.name}}</h1>
 		<img id="albumImg" [src]="album.imageURL">
 		<p *ngFor="let artist of album.artists">
-			Artist: <a [href]="artist.url">{{artist.name}}</a>
+			Artist: <a href="artist/{{artist.id}}">{{artist.name}}</a>
 		</p>
 		<p>
 			<a class="btn btn-light" role="button" target="_blank" [href]="album.url">Open {{album.name}} on Spotify</a>
