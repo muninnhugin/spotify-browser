@@ -13,11 +13,11 @@
 
 2. How long, in hours, did it take you to complete this assignment?
 Rongbing: 10 hours
-
+Ha: 10 hours
 
 3. What online resources did you consult when completing this assignment? (list specific URLs)
-
-
+https://angular.io/docs
+https://developer.spotify.com/documentation/web-api
 
 4. What classmates or other individuals did you consult as part of this assignment? What did you discuss?
 N/A
