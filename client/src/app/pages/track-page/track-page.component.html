@@ -4,10 +4,10 @@
 		<p>
 			Track on <a href="album/{{track.album.id}}">{{track.album.name}}</a>
 		</p>
-		<div *ngFor="let artist of track.artists">
-			<!--need to test several artists display-->
-			<p>
-				Artist: <a href="artist/{{artist.id}}">{{artist.name}}</a>
+		<div>
+			<p>Artist: </p>
+			<p *ngFor="let artist of track.artists">
+				<a href="artist/{{artist.id}}">{{artist.name}}</a>
 			</p>
 		</div>
 		<p>
@@ -18,7 +18,6 @@
 		</p>
 	</div>
 	<div *ngIf="audioFeatures" class="col-6">
-		<!--loop over types of features and create a thermometer component for each-->
 		<app-thermometer *ngFor="let feature of audioFeatures" [feature]="feature"></app-thermometer>
 	</div>
 </div>
