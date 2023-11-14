@@ -1,4 +1,4 @@
---Readme document for Rongbing Lai, Ha Bach, rongbil1@uci.edu, *email(s)*, 69071949, *UCI id(s)*--
+--Readme document for Rongbing Lai, Ha Bach, rongbil1@uci.edu, bachh1@uci.edu, 69071949, 14869914
 
 1. How many assignment points do you believe you completed (replace the *'s with your numbers)?
 
