@@ -12,11 +12,11 @@
 		<tr *ngFor="let track of tracks, index as i">
 			<td>{{i + 1}}</td>
 			<td>
-				<a [href]="track.url">{{track.name}}</a>
+				<a href="track/{{track.id}}">{{track.name}}</a>
 			</td>
 			{{track.durationStr}}
 			<td *ngIf="!hideArtist">{{track.artists.at(0).name}}</td>
-			<td *ngIf="!hideAlbum"><a [href]="track.album.url">{{track.album.name}}</a></td>
+			<td *ngIf="!hideAlbum"><a href="album/{{track.album.id}}">{{track.album.name}}</a></td>
 			<td><a></a></td>
 		</tr>
 	</tbody>
